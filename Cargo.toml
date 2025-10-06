@@ -1,0 +1,28 @@
+[package]
+name = "reforger_server_launcher"
+version = "0.1.0"
+edition = "2024"
+build = "build.rs"
+
+[package.metadata.winresource]
+ProductName = "ArmA Reforger - Server Launcher"
+FileDescription = "Simple Reforger Server Launcher"
+LegalCopyright = "JJayRex"
+
+[dependencies]
+eframe = "0.32.3"
+egui = "0.32.3"
+rfd = "0.15.4"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.145"
+directories = "6.0.0"
+
+[build-dependencies]
+winresource = "0.1.23"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3.9", features = ["wincon"] }
+
+[profile.release]
+codegen-units = 1
+lto = "fat"
